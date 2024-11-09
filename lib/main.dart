@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dynamic_screen.dart';
-import 'responsive_helper.dart'; // Ensure this is the correct import for ResponsiveHelper
+import 'helpers/responsive_helper.dart'; // Ensure this is the correct import for ResponsiveHelper
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  // Ensure Flutter is initialized before using async methods in main
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Optionally, pre-load SharedPreferences
+  await SharedPreferences.getInstance();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
